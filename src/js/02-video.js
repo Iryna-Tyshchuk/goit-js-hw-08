@@ -15,7 +15,8 @@ function onSaveStorage(event) {
 setCurrentTime();
 
 function setCurrentTime() {
-  if (localStorage.getItem(localStorageKey)) {
-    player.setCurrentTime(localStorage.getItem(localStorageKey));
+  const saveTime = localStorageService.load(localStorageKey);
+  if (saveTime) {
+    player.setCurrentTime(saveTime);
   }
 }

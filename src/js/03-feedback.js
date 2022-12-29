@@ -27,6 +27,7 @@ const fillFeadbackFormFields = () => {
   }
   for (const prop in userFeedbackFromLS) {
     formEL.elements[prop].value = userFeedbackFromLS[prop];
+    userFeedback[prop] = userFeedbackFromLS[prop];
   }
 };
 fillFeadbackFormFields();
@@ -43,8 +44,9 @@ const onFormFieldInput = event => {
 
 const onFormSubmit = event => {
   event.preventDefault();
-
   console.log(userFeedback);
+  userFeedback.email = '';
+  userFeedback.message = '';
 
   formEL.reset();
   localStorageService.remove('feedback-form-state');
